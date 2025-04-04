@@ -3,6 +3,8 @@ x-customer-integrations:
   licensing: 
     licenseExpirationInDays: 7
     productPlanUniqueIdentifier: 'PRODUCT-SAMPLE-SKU-UNIQUE-VALUE'
+  logs:
+  metrics:
 
 x-omnistrate-load-balancer:
   https:
