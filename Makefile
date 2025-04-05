@@ -1,4 +1,5 @@
 SERVICE_NAME=service-test
+SERVICE_PLAN=service-test
 MAIN_RESOURCE_NAME=web
 ENVIRONMENT=Dev
 CLOUD_PROVIDER=azure
@@ -25,20 +26,20 @@ login:
 
 .PHONY: release
 release:
-	@omnistrate-ctl build -f compose.yaml --name ${SERVICE_NAME} --release-as-preferred
+	@omnistrate-ctl build -f compose.yaml --name ${SERVICE_NAME}  --environment ${ENVIRONMENT} --environment-type ${ENVIRONMENT} --release-as-preferred
 
 .PHONY: create
 create:
-	@omnistrate-ctl instance create --environment ${ENVIRONMENT} --cloud-provider ${CLOUD_PROVIDER} --region ${REGION} --plan ${SERVICE_NAME} --service ${SERVICE_NAME} --resource ${MAIN_RESOURCE_NAME} 
+	@omnistrate-ctl instance create --environment ${ENVIRONMENT} --cloud-provider ${CLOUD_PROVIDER} --region ${REGION} --plan ${SERVICE_PLAN} --service ${SERVICE_NAME} --resource ${MAIN_RESOURCE_NAME} 
 
 .PHONY: list
 list:
-	@omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json
+	@omnistrate-ctl instance list --filter=service:${SERVICE_NAME},plan:${SERVICE_PLAN} --output json
 
 .PHONY: delete-all
 delete-all:
 	@echo "Deleting all instances..."
-	@for id in $$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json | jq -r '.[].instance_id'); do \
+	@for id in $$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME},plan:${SERVICE_PLAN} --output json | jq -r '.[].instance_id'); do \
 		echo "Deleting instance: $$id"; \
 		omnistrate-ctl instance delete $$id; \
 	done
@@ -51,7 +52,7 @@ destroy: delete-all-wait
 .PHONY: delete-all-wait
 delete-all-wait:
 	@echo "Deleting all instances and waiting for completion..."
-	@instances_to_delete=$$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json | jq -r '.[].instance_id'); \
+	@instances_to_delete=$$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME},plan:${SERVICE_PLAN} --output json | jq -r '.[].instance_id'); \
 	if [ -n "$$instances_to_delete" ]; then \
 		for id in $$instances_to_delete; do \
 			echo "Deleting instance: $$id"; \
@@ -59,7 +60,7 @@ delete-all-wait:
 		done; \
 		echo "Waiting for instances to be deleted..."; \
 		while true; do \
-			remaining=$$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json | jq -r '.[].instance_id'); \
+			remaining=$$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME},plan:${SERVICE_PLAN} --output json | jq -r '.[].instance_id'); \
 			if [ -z "$$remaining" ]; then \
 				echo "All instances deleted successfully"; \
 				break; \
