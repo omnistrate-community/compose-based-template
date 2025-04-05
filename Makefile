@@ -33,12 +33,12 @@ create:
 
 .PHONY: list
 list:
-	@omnistrate-ctl instance list --output json
+	@omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json
 
 .PHONY: delete-all
 delete-all:
 	@echo "Deleting all instances..."
-	@for id in $$(omnistrate-ctl instance list --output json | jq -r '.[].instance_id'); do \
+	@for id in $$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json | jq -r '.[].instance_id'); do \
 		echo "Deleting instance: $$id"; \
 		omnistrate-ctl instance delete $$id; \
 	done
@@ -51,7 +51,7 @@ destroy: delete-all-wait
 .PHONY: delete-all-wait
 delete-all-wait:
 	@echo "Deleting all instances and waiting for completion..."
-	@instances_to_delete=$$(omnistrate-ctl instance list --output json | jq -r '.[].instance_id'); \
+	@instances_to_delete=$$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json | jq -r '.[].instance_id'); \
 	if [ -n "$$instances_to_delete" ]; then \
 		for id in $$instances_to_delete; do \
 			echo "Deleting instance: $$id"; \
@@ -59,7 +59,7 @@ delete-all-wait:
 		done; \
 		echo "Waiting for instances to be deleted..."; \
 		while true; do \
-			remaining=$$(omnistrate-ctl instance list --output json | jq -r '.[].instance_id'); \
+			remaining=$$(omnistrate-ctl instance list --filter=service:${SERVICE_NAME} --output json | jq -r '.[].instance_id'); \
 			if [ -z "$$remaining" ]; then \
 				echo "All instances deleted successfully"; \
 				break; \
