@@ -3,18 +3,22 @@
 Example on how to build and deploy a Container Based Service in (Omnistrate)[https://www.omnistrate.com]
 
 ## Configuration Setup
+
 Before using the make commands, you need to set up the following configuration files:
 
 1. `.env` file:
-   ```
+
+   ```bash
    OMNISTRATE_EMAIL=your-email@example.com
    ```
 
 2. `.omnistrate.password` file:
-   ```
+
+   ```bash
    your-omnistrate-password
    ```
-   Make sure to keep this file secure and never commit it to version control.
+
+Make sure to keep this file secure and never commit it to version control.
 
 ## Available Make Commands
 
