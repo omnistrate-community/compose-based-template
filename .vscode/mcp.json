@@ -1,0 +1,9 @@
+{
+	"servers": {
+		"omnistrate": {
+			"url": "https://mcp.omnistrate.cloud/mcp",
+			"type": "http"
+		}
+	},
+	"inputs": []
+}
