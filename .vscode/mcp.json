@@ -2,14 +2,11 @@
   "servers": {
     "omnistrate-ctl": {
       "type": "stdio",
-      "command": "/Users/pberton/Workspace/omnistrate-ctl/dist/omnistrate-ctl-darwin-arm64",
+      "command": "omnistrate-ctl",
       "args": [
         "mcp",
         "start"
-      ],
-      "tools": [
-        "omnistrate-ctl-docs-search"
-	  ]
+      ]
     }
   }
 }
