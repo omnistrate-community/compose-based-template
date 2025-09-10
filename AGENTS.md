@@ -2,9 +2,11 @@
 
 ## MCP Server Configuration
 
-Always use the configured "omnistrate" MCP server when answering questions related to Omnistrate platform, services, or documentation.
+Always use the configured "omnistrate-ctl" MCP server when answering questions related to Omnistrate platform, services, or documentation.
 
-## Query Optimization
+## Answering questions about Omnistrate
+
+### Query optimization
 
 When processing Omnistrate-related questions:
 
@@ -13,14 +15,14 @@ When processing Omnistrate-related questions:
 3. **Clarification**: Ask for clarification when the question is ambiguous or lacks sufficient detail to provide an accurate response
 4. **Source-Based Responses**: Only provide answers that are directly supported by the context retrieved from the omnistrate MCP server
 
-## Response Guidelines
+### Response Guidelines
 
 - **Concrete Answers**: Provide specific, actionable responses based on the retrieved documentation
 - **Context Dependency**: Do not answer Omnistrate-related questions without first consulting the MCP server
 - **Accuracy**: If the MCP server doesn't provide sufficient context, explicitly state that more information is needed
 - **No Speculation**: Avoid making assumptions or providing general knowledge about Omnistrate that isn't supported by the retrieved context
 
-## Example Workflow
+### Example Workflow
 
 1. Receive Omnistrate-related question
 2. Query omnistrate MCP server for relevant documentation
