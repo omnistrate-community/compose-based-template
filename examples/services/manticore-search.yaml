@@ -2,8 +2,8 @@
 version: '3.9'
 
 x-omnistrate-integrations:
-- omnistrateLogging
-- omnistrateMetrics
+  - omnistrateLogging
+  - omnistrateMetrics
 
 services:
   Manticore:
