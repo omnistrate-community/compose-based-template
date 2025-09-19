@@ -38,7 +38,7 @@ When processing Omnistrate-related questions:
 When generating Omnistrate compose spec:
 
 1. **File generation**: ALWAYS GENERATE THE COMPOSE SPEC IN A FILE NAMED: "compose.yaml"
-2. **Identify the values needed**: Read the instructions in ./.omnistrate/COMPOSE-SPEC.md and ./.omnistrate/COMPOSE-EXTENSIONS.md to identify the requirements and features supported to specify a service
+2. **Identify the values needed**: Read the instructions in ./.omnistrate/COMPOSE-SPEC.md to identify the requirements and features supported to specify a service
 3. **Review the examples**: Read the examples in ./examples/features and ./examples/service folder to use as a reference
 4. **Context Analysis**: Analyze the retrieved context thoroughly to understand the service specification to generate
 5. **Clarification**: Ask for clarification when the question is ambiguous or lacks sufficient detail to provide an accurate response
