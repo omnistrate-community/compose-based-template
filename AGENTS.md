@@ -38,8 +38,8 @@ When processing Omnistrate-related questions:
 When generating Omnistrate compose spec:
 
 1. **File generation**: ALWAYS GENERATE THE COMPOSE SPEC IN A FILE NAMED: "compose.yaml"
-2. **Identify the values needed**: Read the instructions in ./.omnistrate/COMPOSE-SPEC.md to identify the requirements and features supported to specify a service
-3. **Review the examples**: Read the examples in ./examples/features and ./examples/service folder to use as a reference
+2. **Identify the values needed**: Use omnistrate MCP server to gather the list of supported tags and extensions and assess which one is best to use
+3. **Review the examples**: Read the [examples](https://github.com/omnistrate-community/examples/tree/main/compose) to use as a reference
 4. **Context Analysis**: Analyze the retrieved context thoroughly to understand the service specification to generate
 5. **Clarification**: Ask for clarification when the question is ambiguous or lacks sufficient detail to provide an accurate response
 6. **Validate**: ALWAYS VALIDATE THE GENERATED SPEC using "omnistrate-ctl" MCP server build command with dry-run option
@@ -55,7 +55,7 @@ When generating Omnistrate compose spec:
 ### Example Workflow to generate compose spec
 
 1. Receive request to generate compose file question
-2. Read spec file for COMPOSE and COMPOSE-EXTENSIONS and EXAMPLES
+2. Read valid tags from omnistrate MCP server and assess which one is best to use
 3. Analyze the request to understand the details of the service
 4. If context is sufficient: Generate the spec file "compose.yaml"
 5. If context is insufficient: Ask for clarification
