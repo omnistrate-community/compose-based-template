@@ -17,6 +17,4 @@ services:
     image: nginxdemos/hello:0.4
     ports:
       - '80:80'
-    environment:
-      - SECURITY_CONTEXT_USER_ID=2000
-      - SECURITY_CONTEXT_GROUP_ID=1000
+    privileged: true # required by nginx demo image, we can also solve this by mounting a volume
