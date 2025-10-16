@@ -6,10 +6,7 @@
       "args": [
         "mcp",
         "start"
-      ],
-      "env": {
-        "OUTPUT_FORMAT": "json"
-      }
+      ]
     }
   }
 }
