@@ -32,10 +32,9 @@ Make sure to keep this file secure and never commit it to version control.
 - `make upgrade-ctl`: Upgrades the Omnistrate CLI tool to the latest version
 - `make login`: Logs in to Omnistrate using credentials from your environment
 - `make release`: Builds and releases the service using the compose.yaml configuration
-- `make create`: Creates a new instance of the service with the following defaults:
-  - Environment: Dev
-  - Cloud Provider: Azure
-  - Region: eastus2
+- `make create-aws`: Creates a new instance of the service in AWS
+- `make create-gcp`: Creates a new instance of the service in GCP
+- `make create-azure`: Creates a new instance of the service in Azure
 - `make list`: Lists all instances in JSON format
 - `make delete-all`: Deletes all running instances immediately
 - `make delete-all-wait`: Deletes all instances and waits for completion

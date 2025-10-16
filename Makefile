@@ -2,8 +2,12 @@ SERVICE_NAME=service-test
 SERVICE_PLAN=service-test
 MAIN_RESOURCE_NAME=web
 ENVIRONMENT=Dev
-CLOUD_PROVIDER=azure
-REGION=eastus2
+AWS_CLOUD_PROVIDER=aws
+AWS_REGION=ap-south-1
+GCP_CLOUD_PROVIDER=gcp
+GCP_REGION=us-central1
+AZURE_CLOUD_PROVIDER=azure
+AZURE_REGION=eastus2
 
 # Load variables from .env if it exists
 ifneq (,$(wildcard .env))
@@ -28,9 +32,17 @@ login:
 release:
 	@omnistrate-ctl build -f compose.yaml --product-name ${SERVICE_NAME}  --environment ${ENVIRONMENT} --environment-type ${ENVIRONMENT} --release-as-preferred
 
-.PHONY: create
-create:
-	@omnistrate-ctl instance create --environment ${ENVIRONMENT} --cloud-provider ${CLOUD_PROVIDER} --region ${REGION} --plan ${SERVICE_PLAN} --service ${SERVICE_NAME} --resource ${MAIN_RESOURCE_NAME} 
+.PHONY: create-aws
+create-aws:
+	@omnistrate-ctl instance create --environment ${ENVIRONMENT} --cloud-provider ${AWS_CLOUD_PROVIDER} --region ${AWS_REGION} --plan ${SERVICE_PLAN} --service ${SERVICE_NAME} --resource ${MAIN_RESOURCE_NAME} 
+
+.PHONY: create-gcp
+create-gcp:
+	@omnistrate-ctl instance create --environment ${ENVIRONMENT} --cloud-provider ${GCP_CLOUD_PROVIDER} --region ${GCP_REGION} --plan ${SERVICE_PLAN} --service ${SERVICE_NAME} --resource ${MAIN_RESOURCE_NAME}
+
+.PHONY: create-azure
+create-azure:
+	@omnistrate-ctl instance create --environment ${ENVIRONMENT} --cloud-provider ${AZURE_CLOUD_PROVIDER} --region ${AZURE_REGION} --plan ${SERVICE_PLAN} --service ${SERVICE_NAME} --resource ${MAIN_RESOURCE_NAME}
 
 .PHONY: list
 list:
